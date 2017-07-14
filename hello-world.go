@@ -9,19 +9,19 @@ import (
 
 func main() {
 	// Construct a graph with an operation that produces a string constant.
-	s := op.NewScope()
-	c := op.Const(s, "Hello from TensorFlow version "+tf.Version())
-	graph, err := s.Finalize()
+	root := op.NewScope()
+	msg := op.Const(root, "Hello from TensorFlow version "+tf.Version())
+	graph, err := root.Finalize()
 	if err != nil {
 		panic(err)
 	}
 
 	// Execute the graph in a session.
-	sess, err := tf.NewSession(graph, nil)
+	session, err := tf.NewSession(graph, nil)
 	if err != nil {
 		panic(err)
 	}
-	output, err := sess.Run(nil, []tf.Output{c}, nil)
+	output, err := session.Run(nil, []tf.Output{msg}, nil)
 	if err != nil {
 		panic(err)
 	}
