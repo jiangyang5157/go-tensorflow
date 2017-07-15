@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	tf "github.com/tensorflow/tensorflow/tensorflow/go"
 	"github.com/tensorflow/tensorflow/tensorflow/go/op"
 )
@@ -60,11 +61,11 @@ func main() {
 	var matrix, column *tf.Tensor
 
 	// A = [ [1, 2], [-1, -2] ]
-	if matrix, err = tf.NewTensor([2][2]int32{ {1, 2}, {-1, -2} }); err != nil {
+	if matrix, err = tf.NewTensor([2][2]int32{{1, 2}, {-1, -2}}); err != nil {
 		panic(err.Error())
 	}
 	// x = [ [10], [100] ]
-	if column, err = tf.NewTensor([2][1]int32{ {10}, {100} }); err != nil {
+	if column, err = tf.NewTensor([2][1]int32{{10}, {100}}); err != nil {
 		panic(err.Error())
 	}
 
